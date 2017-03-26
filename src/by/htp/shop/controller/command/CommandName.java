@@ -1,0 +1,5 @@
+package by.htp.shop.controller.command;
+
+public enum CommandName {
+	SIGN_IN, LOCALIZATION, USERS_LIST, GOTO_USER, GOTO_ADMIN, GOTO_USERS_LIST, GOTO_SIGNIN_ERROR, REGISTER_USER, GOTO_USER_INFO
+}

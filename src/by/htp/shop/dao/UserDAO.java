@@ -8,7 +8,7 @@ public interface UserDAO {
 	
 	public User userLogin(String login, String password) throws DAOException;
 
-	public int addUser(User user);
+	public boolean addUser(User user) throws DAOException;
 	
 	public boolean deleteUser (int id);
 
@@ -18,7 +18,7 @@ public interface UserDAO {
 	
 	public User getUser (int id) throws DAOException;
 	
-	
+	boolean isLoginExist (String login) throws DAOException;
 
 	
 }

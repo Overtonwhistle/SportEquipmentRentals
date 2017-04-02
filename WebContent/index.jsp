@@ -19,7 +19,7 @@
 <fmt:message bundle="${loc}" key="local.locbutton.name.en"
 	var="en_button" />
 
-<fmt:message bundle="${loc}" key="local.welcome_message" var="message" />
+<fmt:message bundle="${loc}" key="local.welcome_message" var="welcome_message" />
 <fmt:message bundle="${loc}" key="local.message_signin" var="sign_in" />
 <fmt:message bundle="${loc}" key="local.message_name" var="name" />
 <fmt:message bundle="${loc}" key="local.message_pass" var="pass" />
@@ -43,8 +43,6 @@
 			value="${ru_button}" /><br />
 	</form>
 
-
-
 	<form action="Controller" method="post">
 		<input type="hidden" name="page" value="index.jsp" /> <input
 			type="hidden" name="command" value="localization" /> <input
@@ -53,14 +51,15 @@
 	</form>
 
 	<br />
+	
 	<form action="Controller" method="post">
 		<c:out value="${sign_in}" />
 		<input type="hidden" name="command" value="sign_in" /> <br />
 		<c:out value="${name}" />
 		<input type="text" name="login" value="" /> <br />
 		<c:out value="${pass}" />
-		<input type="password" name="password" value="" /> <br /> <input
-			type="submit" value="${signin_button}" /><br />
+		<input type="password" name="password" value="" /> <br /> 
+		<input type="submit" value="${signin_button}" /><br />
 	</form>
 
 	<form action="Controller" method="post">

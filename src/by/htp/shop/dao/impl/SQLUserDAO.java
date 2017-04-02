@@ -17,9 +17,35 @@ public class SQLUserDAO implements UserDAO {
 	SQLProvider provider = SQLProvider.getInstance();
 
 	@Override
-	public int addUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean addUser(User user) throws DAOException {
+
+		String name = user.getName();
+		String surname = user.getSurname();
+//		String address = user.getAddress();
+		
+		String address;
+		address = user.getAddress().equals("") ? null: user.getAddress();
+				
+//		address = address.equals("")? address==null: address="sds";
+		String phone;
+		phone = user.getPhone().equals("") ? null: user.getPhone();
+		
+		String email;
+		email = user.getEmail().equals("") ? null: user.getEmail();
+		
+		String login = user.getLogin();
+		String password = user.getPassword();
+		String role = user.getRole();
+
+		String request = "INSERT INTO users (id, role, name, surname, address, phone, email, login, password) VALUES (NULL, '"
+				+ role + "', '" + name + "', '" + surname + "','" + address + "','" + phone + "', '" + email + "', '"
+				+ login + "', '" + password + "')";
+		System.out.println("INSERTing req SQL=" + request);
+
+		// ResultSet rs = provider.getResultSet(request);
+		// System.out.println("result set=" + rs);
+		provider.insertSQL(request);
+		return true;
 	}
 
 	@Override
@@ -43,9 +69,11 @@ public class SQLUserDAO implements UserDAO {
 			while (rs.next()) {
 				// User user = new User();
 
-//				System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4)
-//						+ " " + rs.getString(5) + " " + rs.getString(6) + " " + rs.getString(7) + " " + rs.getString(8)
-//						+ " " + rs.getString(9));
+				// System.out.println(rs.getInt(1) + " " + rs.getString(2) + " "
+				// + rs.getString(3) + " " + rs.getString(4)
+				// + " " + rs.getString(5) + " " + rs.getString(6) + " " +
+				// rs.getString(7) + " " + rs.getString(8)
+				// + " " + rs.getString(9));
 
 				users.add(makeUser(rs));
 
@@ -85,7 +113,7 @@ public class SQLUserDAO implements UserDAO {
 	public User getUser(int id) throws DAOException {
 
 		String request = "SELECT * FROM users WHERE id='" + id + "'";
-//		System.out.println("reqSQL=" + request);
+		// System.out.println("reqSQL=" + request);
 		ResultSet rs = provider.getResultSet(request);
 
 		try {
@@ -96,7 +124,6 @@ public class SQLUserDAO implements UserDAO {
 		} catch (SQLException e1) {
 			throw new DAOException("SQL Exception in getUser()", e1);
 		}
-
 
 		return makeUser(rs);
 	}
@@ -118,5 +145,24 @@ public class SQLUserDAO implements UserDAO {
 		}
 
 		return user;
+	}
+
+	@Override
+	public boolean isLoginExist(String login) throws DAOException {
+		String request = "SELECT * FROM users WHERE login='" + login + "'";
+		System.out.println("reqSQL=" + request);
+		ResultSet rs = provider.getResultSet(request);
+
+		try {
+			if (rs.next()) {
+				System.out.println("return true");
+
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("SQL Exception in isLoginExist()", e);
+		}
+		return false;
 	};
 }

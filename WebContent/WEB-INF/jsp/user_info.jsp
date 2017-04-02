@@ -18,14 +18,24 @@
 <fmt:message bundle="${loc}" key="local.locbutton.name.en"
 	var="en_button" />
 
-<fmt:message bundle="${loc}" key="local.users_list_descr"
-	var="list_description" />
-<fmt:message bundle="${loc}" key="local.add_user_name" var="add" />
-<fmt:message bundle="${loc}" key="local.edit_user_name" var="edit" />
-<fmt:message bundle="${loc}" key="local.delete_user_name" var="delete" />
+<fmt:message bundle="${loc}" key="local.user_descr" var="personal_data" />
 
+
+
+<fmt:message bundle="${loc}" key="local.user_id" var="id" />
+<fmt:message bundle="${loc}" key="local.user_role" var="role" />
 <fmt:message bundle="${loc}" key="local.user_name" var="name" />
 <fmt:message bundle="${loc}" key="local.user_surname" var="surname" />
+<fmt:message bundle="${loc}" key="local.user_address" var="address" />
+<fmt:message bundle="${loc}" key="local.user_phone" var="phone" />
+<fmt:message bundle="${loc}" key="local.user_email" var="email" />
+<fmt:message bundle="${loc}" key="local.user_login" var="login" />
+<fmt:message bundle="${loc}" key="local.user_password" var="password" />
+
+
+
+
+
 
 
 </head>
@@ -44,37 +54,29 @@
 
 
 	<div>
-		<c:out value="${list_description}" />
+		<c:out value="${personal_data}" />
 		<table>
 			<tr>
-				<td><c:out value="id." /></td>
+				<td><c:out value="${id}" /></td>
+				<td><c:out value="${role}" /></td>
 				<td><c:out value="${name}" /></td>
 				<td><c:out value="${surname}" /></td>
+				<td><c:out value="${address}" /></td>
+				<td><c:out value="${phone}" /></td>
+				<td><c:out value="${email}" /></td>
 			</tr>
-			<c:forEach items="${requestScope.list}" var="user">
-				<tr>
-					<td><c:out value="${user.id}" /></td>
-					<td><c:out value="${user.name}" /></td>
-					<td><c:out value="${user.surname}" /></td>
-				</tr>
-			</c:forEach>
+			<tr>
+				<td><c:out value="${user.id}" /></td>
+				<td><c:out value="${user.role}" /></td>
+				<td><c:out value="${user.name}" /></td>
+				<td><c:out value="${user.surname}" /></td>
+				<td><c:out value="${user.address}" /></td>
+				<td><c:out value="${user.phone}" /></td>
+				<td><c:out value="${user.email}" /></td>
+			</tr>
 		</table>
 	</div>
 
-	<div>
-		<form action="Controller" method="post">
-			<input type="hidden" name="command" value="add_user" /> <br /> <input
-				type="submit" value="${add}" /><br />
-		</form>
-		<form action="Controller" method="post">
-			<input type="hidden" name="command" value="edit_user" /> <br /> <input
-				type="submit" value="${edit}" /><br />
-		</form>
-		<form action="Controller" method="post">
-			<input type="hidden" name="command" value="delete_user" /> <br /> <input
-				type="submit" value="${delete}" /><br />
-		</form>
-	</div>
-
+	
 </body>
 </html>

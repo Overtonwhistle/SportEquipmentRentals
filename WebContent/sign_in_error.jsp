@@ -24,7 +24,7 @@
 <fmt:message bundle="${loc}" key="local.error.bad_password" var="bad_password" />
 <fmt:message bundle="${loc}" key="local.error.no_user" var="no_user" />
 
-
+писать if !
 </head>
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->

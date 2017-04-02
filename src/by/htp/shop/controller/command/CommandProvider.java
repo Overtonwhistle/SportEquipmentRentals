@@ -10,6 +10,7 @@ import by.htp.shop.controller.command.impl.GoToUserPage;
 import by.htp.shop.controller.command.impl.GoToUsersList;
 import by.htp.shop.controller.command.impl.Localization;
 import by.htp.shop.controller.command.impl.RegisterUser;
+import by.htp.shop.controller.command.impl.RegistrationProcess;
 import by.htp.shop.controller.command.impl.SignIn;
 
 public class CommandProvider {
@@ -24,6 +25,7 @@ public class CommandProvider {
 		commands.put(CommandName.GOTO_USERS_LIST, new GoToUsersList());
 		commands.put(CommandName.GOTO_SIGNIN_ERROR, new GoToSignInError());
 		commands.put(CommandName.REGISTER_USER, new RegisterUser());
+		commands.put(CommandName.REG_PROCESS, new RegistrationProcess());
 	}
 
 	public Command getCommand(String name) {

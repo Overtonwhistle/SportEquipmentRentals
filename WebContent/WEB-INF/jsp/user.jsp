@@ -35,7 +35,6 @@
 </head>
 <body>
 	<c:out value="${welcome_message}" />
-	<!-- <input type="hidden" name="page" value="/WEB-INF/jsp/user.jsp" /> -->
 	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="localization" /> <input
 			type="hidden" name="local" value="ru" /> <input type="submit"
